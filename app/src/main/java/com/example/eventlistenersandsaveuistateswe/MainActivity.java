@@ -16,10 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
         textView=findViewById(R.id.tvSaveInstance);
         textView.setText("Welcome to Masai School");
-        if(savedInstanceState!=null){
-            String data=savedInstanceState.getString("key");
-            textView.setText(data);
-        }
     }
 
     @Override
@@ -28,5 +24,10 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("key","Screen Rotated");
     }
 
-
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String data=savedInstanceState.getString("key");
+        textView.setText(data);
+    }
 }
